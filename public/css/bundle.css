@@ -1,0 +1,75 @@
+@charset "UTF-8";
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+body {
+  background-color: #ccc;
+  font-family: 'Open Sans', sans-serif;
+  min-width: 600px; }
+
+.header {
+  background-color: #fff;
+  width: 600px;
+  margin: 1em auto;
+  padding: 1em 2em 1em 2em;
+  overflow: auto; }
+  .header__text {
+    float: left;
+    font-weight: bold; }
+  .header__logout {
+    float: right; }
+
+.logout-link, .logout-link:active, .logout-link:visited {
+  text-decoration: none;
+  color: #666; }
+
+.logout-link:hover {
+  text-decoration: underline; }
+
+.todo-list {
+  background-color: #fff;
+  width: 600px;
+  margin: 0 auto;
+  padding: 2em; }
+
+.todo-item {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center; }
+  .todo-item__checkbox {
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    margin-right: 1em;
+    border-radius: 10px;
+    cursor: pointer; }
+    .todo-item__checkbox--checked {
+      background-color: #000; }
+  .todo-item--empty .todo-item__checkbox {
+    visibility: hidden; }
+  .todo-item__text {
+    display: inline-block;
+    flex: 2;
+    background: none;
+    border: 1 px solid;
+    border-color: transparent; }
+    .todo-item__text:hover, .todo-item__text:focus {
+      border-bottom-color: #ccc; }
+    .todo-item__text--crossout {
+      text-decoration: line-through; }
+      .todo-item__text--crossout:hover {
+        border-color: transparent; }
+  .todo-item__remove {
+    width: 20px;
+    height: 20px;
+    margin-left: 1em;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0; }
+    .todo-item__remove::after {
+      content: '⨯';
+      color: #666; }
+    .todo-item__remove:focus {
+      opacity: 1; }
+    .todo-item__remove--hidden {
+      visibility: hidden; }
+  .todo-item:hover .todo-item__remove, .todo-item__text:focus + .todo-item__remove {
+    opacity: 1; }

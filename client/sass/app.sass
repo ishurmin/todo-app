@@ -1,0 +1,92 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans'
+
+$width: 600px
+$color-grey: #ccc
+$color-dark-grey: #666
+
+body
+    background-color: $color-grey
+    font-family: 'Open Sans', sans-serif
+    min-width: $width
+
+.header
+    background-color: #fff
+    width: $width
+    margin: 1em auto
+    padding: 1em 2em 1em 2em
+    overflow: auto
+
+    &__text
+        float: left
+        font-weight: bold
+
+    &__logout
+        float: right
+
+.logout-link
+    &, &:active, &:visited
+        text-decoration: none
+        color: $color-dark-grey
+    &:hover
+        text-decoration: underline
+
+.todo-list
+    background-color: #fff
+    width: $width
+    margin: 0 auto
+    padding: 2em
+
+.todo-item
+    margin-bottom: 1em
+    display: flex
+    align-items: center
+
+    &__checkbox
+        width: 20px
+        height: 20px
+        background-color: $color-grey
+        margin-right: 1em
+        border-radius: 10px
+        cursor: pointer
+
+        &--checked
+            background-color: #000
+
+    &--empty &__checkbox
+        visibility: hidden
+
+    &__text
+        display: inline-block
+        flex: 2
+        background: none
+        border: 1 px solid
+        border-color: transparent
+
+        &:hover, &:focus
+            border-bottom-color: $color-grey
+
+        &--crossout
+            text-decoration: line-through
+
+            &:hover
+                border-color: transparent
+    &__remove
+        width: 20px
+        height: 20px
+        margin-left: 1em
+        cursor: pointer
+        text-align: center
+        opacity: 0
+
+        &::after
+            content: '⨯'
+            color: $color-dark-grey
+
+        &:focus
+            opacity: 1
+
+        &--hidden
+            visibility: hidden
+
+    &:hover &__remove, &__text:focus + &__remove
+        opacity: 1
