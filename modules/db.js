@@ -3,6 +3,7 @@ const shortid = require('shortid');
 
 module.exports = (path) => {
 
+  // открытие существующей / создание новой db и наполнение данными
   const db = levelup(path);
   db.get('tasks', (err, val) => {
     if (err && err.notFound) {

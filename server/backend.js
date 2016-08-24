@@ -7,7 +7,7 @@ module.exports = (port) => {
   const token = require('../modules/token')(process.env.TOKEN_SECRET);
 
   const app = express();
-
+  
   app.use(bodyParser.json());
   app.use((req, res, next) => {
     if (!req.body) res.sendStatus(400);
@@ -18,6 +18,7 @@ module.exports = (port) => {
     next();
   });
 
+  // генерация токена
   app.get('/auth', (req, res) => {
     res.json({
       result: 'success',
@@ -25,6 +26,7 @@ module.exports = (port) => {
     })
   });
 
+  // проверка токена
   app.use((req, res, next) => {
       if (req.body.token){
           token.verify(req.body.token).then(() => {
@@ -92,6 +94,7 @@ module.exports = (port) => {
     });
   });
 
+  // обработка ошибок
   app.use((err, req, res, next) => {
     res.json({
       result: 'error',

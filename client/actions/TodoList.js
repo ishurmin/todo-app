@@ -1,5 +1,6 @@
 const request = require('request');
 
+// multipart/form-data запрос к middleware
 function makeRequest(method, path, data={}) {
   return new Promise((res, rej) => {
     request.post({
@@ -51,6 +52,7 @@ var removeTaskLocal = (id) => ({
 })
 
 var addTask = (done, text) => (dispatch) => {
+  // здесь можно делать optimistic update
   makeRequest('POST', '/todos', {
     done: done,
     text: text
@@ -64,7 +66,7 @@ var addTask = (done, text) => (dispatch) => {
 var removeTask = (id) => (dispatch) => {
   dispatch(removeTaskLocal(id));
   makeRequest('DELETE', '/todos/' + id).then((task) => {
-    //---
+    // здесь можно проверять значение с сервера
   }).catch((err) => {
     console.log(err);
   });
@@ -76,12 +78,13 @@ var changeTask = (id, done, text) => (dispatch) => {
     done: done,
     text: text
   }).then(() => {
-    // ---
+    // здесь можно проверять значение с сервера
   }).catch((err) => {
     console.log(err);
   });
 };
 
+// загрузка всех задач
 var loadTasks = () => (dispatch) => {
   makeRequest('GET', '/todos').then((tasks) => {
     tasks.forEach((item) => {

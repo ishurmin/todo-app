@@ -1,6 +1,23 @@
 ### TODO test app
 
-1. `redis` is expected to be installed and running with default configuration
-2. rename `.env.example` to `.env`
-3. `npm install`
-4. `npm run start`
+##### Задача:
+Сделать TODO-приложение, используя *node/expess* и *react/redux*
+
+##### Архитектура:
+- _backend_-сервер предоставляет REST API для списка задач, хранящихся в базе данных `levelDB` и использует `json web tokens` для авторизации
+- _middleware_-сервер выступает в качестве web-сервера и обслуживает сессии, используя `redis` как хранилище
+- в сессиях хранятся токены доступа к backend
+- пользователь авторизуется по нажатию кнопки login
+- запросы от клиента приходят в формате `multipart/form-data` и перенаправляются к backend
+
+##### Запуск:
+1. переименуйте `.env.example` в `.env` и по необходимости измените настройки
+2. `npm install`
+3. `npm run start`
+
+##### То, чего здесь нет, но должно быть в production-коде
+- тесты
+- минификация
+- аутентификация по логину/паролю
+- https
+- nginx
